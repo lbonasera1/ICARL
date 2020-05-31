@@ -4,8 +4,8 @@ import os.path
 import numpy as np
 import pickle
 
-from .vision import VisionDataset
-from .utils import check_integrity, download_and_extract_archive
+from torchvision.vision import VisionDataset
+from torchvision.utils import check_integrity, download_and_extract_archive
 
 
 [docs]class CIFAR10(VisionDataset):

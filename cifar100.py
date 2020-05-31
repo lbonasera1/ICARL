@@ -8,7 +8,7 @@ from torchvision.vision import VisionDataset
 from torchvision.utils import check_integrity, download_and_extract_archive
 
 
-[docs]class CIFAR10(VisionDataset):
+class CIFAR10(VisionDataset):
     """`CIFAR10 <https://www.cs.toronto.edu/~kriz/cifar.html>`_ Dataset.
 
     Args:
@@ -95,7 +95,7 @@ from torchvision.utils import check_integrity, download_and_extract_archive
             self.classes = data[self.meta['key']]
         self.class_to_idx = {_class: i for i, _class in enumerate(self.classes)}
 
-[docs]    def __getitem__(self, index):
+    def __getitem__(self, index):
         """
         Args:
             index (int): Index
@@ -141,7 +141,7 @@ from torchvision.utils import check_integrity, download_and_extract_archive
 
 
 
-[docs]class CIFAR100(CIFAR10):
+class CIFAR100(CIFAR10):
     """`CIFAR100 <https://www.cs.toronto.edu/~kriz/cifar.html>`_ Dataset.
 
     This is a subclass of the `CIFAR10` Dataset.

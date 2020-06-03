@@ -56,7 +56,7 @@ class ResNet(nn.Module):
         self.layer2 = self._make_layer(block, 32, layers[1], stride=2)
         self.layer3 = self._make_layer(block, 64, layers[2], stride=2)
         self.avgpool = nn.AvgPool2d(8, stride=1)
-        self.classifier = None
+        self.fc = nn.Linear(64, num_classes)
 
         for m in self.modules():
             if isinstance(m, nn.Conv2d):
@@ -94,9 +94,7 @@ class ResNet(nn.Module):
         x = self.avgpool(x)
         x = x.view(x.size(0), -1)
         
-        # norm l2
-        if self.classifier is not None:
-            x = self.classifier(x)
+        x = self.fc(x)
         return x
 
 def resnet32(pretrained=False, **kwargs):

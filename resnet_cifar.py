@@ -57,6 +57,7 @@ class ResNet(nn.Module):
         self.layer3 = self._make_layer(block, 64, layers[2], stride=2)
         self.avgpool = nn.AvgPool2d(8, stride=1)
         self.fc = nn.Linear(64, num_classes)
+        self.flag = True
 
         for m in self.modules():
             if isinstance(m, nn.Conv2d):
@@ -81,6 +82,10 @@ class ResNet(nn.Module):
             layers.append(block(self.inplanes, planes))
 
         return nn.Sequential(*layers)
+    
+    def set_flag(self, flag):
+        self.flag = flag
+        return 0     
 
     def forward(self, x):
         x = self.conv1(x)

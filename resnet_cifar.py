@@ -99,7 +99,8 @@ class ResNet(nn.Module):
         x = self.avgpool(x)
         x = x.view(x.size(0), -1)
         
-        x = self.fc(x)
+        if self.flag is True:
+            x = self.fc(x)
         return x
 
 def resnet32(pretrained=False, **kwargs):

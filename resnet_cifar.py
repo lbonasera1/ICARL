@@ -57,6 +57,7 @@ class ResNet(nn.Module):
         self.layer3 = self._make_layer(block, 64, layers[2], stride=2)
         self.avgpool = nn.AvgPool2d(8, stride=1)
         self.fc = nn.Linear(64, num_classes)
+        self.sig = nn.Sigmoid()
         self.flag = True
 
         for m in self.modules():
@@ -101,6 +102,7 @@ class ResNet(nn.Module):
         
         if self.flag is True:
             x = self.fc(x)
+            x = self.sig(x)
         return x
 
 def resnet32(pretrained=False, **kwargs):

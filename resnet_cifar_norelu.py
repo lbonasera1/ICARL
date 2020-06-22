@@ -89,7 +89,7 @@ class ResNet(nn.Module):
         else:
           for i in range(1, blocks - 1):
               layers.append(block(self.inplanes, planes))
-          layers.append(block(self.inplanes, planes, flag_relu=flag_relu)    
+          layers.append(block(self.inplanes, planes, flag_relu=flag_relu))    
 
         return nn.Sequential(*layers)
     

@@ -114,7 +114,7 @@ class ResNet(nn.Module):
             x = self.fc(x)
         return x
 
-def resnet32_norelu(pretrained=False, **kwargs):
+def resnet32_cosine(pretrained=False, **kwargs):
     n = 5
     model = ResNet(BasicBlock, [n, n, n], **kwargs)
     return model

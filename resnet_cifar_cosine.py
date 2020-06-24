@@ -1,7 +1,7 @@
 import torch.nn as nn
 import math
 import torch.utils.model_zoo as model_zoo
-import cosine_linear_layer
+from ICARL.cosine_linear_layer import CosineLinear
 
 """
 Credits to @hshustc
@@ -61,7 +61,7 @@ class ResNet(nn.Module):
         self.layer2 = self._make_layer(block, 32, layers[1], stride=2)
         self.layer3 = self._make_layer(block, 64, layers[2], stride=2, flag_relu=False)
         self.avgpool = nn.AvgPool2d(8, stride=1)
-        self.fc = cosine_linear_layer.CosineLinear(64 * block.expansion, num_classes)
+        self.fc = CosineLinear(64 * block.expansion, num_classes)
         self.flag = True
 
         for m in self.modules():

@@ -31,7 +31,6 @@ class CosineLinear(Module):
         return out
 
 class SplitCosineLinear(Module):
-    #consists of two fc layers and concatenate their outputs
     def __init__(self, in_features, out_features1, out_features2, sigma=True):
         super(SplitCosineLinear, self).__init__()
         self.in_features = in_features
@@ -47,7 +46,7 @@ class SplitCosineLinear(Module):
     def forward(self, x):
         out1 = self.fc1(x)
         out2 = self.fc2(x)
-        out = torch.cat((out1, out2), dim=1) #concatenate along the channel
+        out = torch.cat((out1, out2), dim=1)
         if self.sigma is not None:
             out = self.sigma * out
         return out

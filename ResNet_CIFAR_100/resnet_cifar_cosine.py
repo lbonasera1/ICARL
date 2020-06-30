@@ -1,7 +1,7 @@
 import torch.nn as nn
 import math
 import torch.utils.model_zoo as model_zoo
-from ICARL.cosine_linear_layer import CosineLinear
+from ICARL.ResNet_CIFAR_100.cosine_linear_layer import CosineLinear
 
 """
 Credits to @hshustc
